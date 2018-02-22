@@ -76,16 +76,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				$candidates = [];
 				if(count($d->childNodes)){
 					$candidates[] = $d->firstChild;
-					$candidates[] = $d->lastChild;
-					$candidates[] = $d->previousSibling;
-					$candidates[] = $d->nextSibling;
+                    			$candidates[] = $d->nextSibling;
+                    			$candidates[] = $d->lastChild;
+                    			$candidates[] = $d->previousSibling;
 				}
 				foreach($candidates as $c){
 					if($c==null){
 						continue;
 					}
 					if($c->nodeType==3){
-						$c->nodeValue = trim($c->nodeValue);
+						$c->nodeValue = $i > 1 ? rtrim($c->nodeValue) : ltrim($c->nodeValue);
 					}
 				}
 			}
